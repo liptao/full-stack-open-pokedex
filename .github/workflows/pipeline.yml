@@ -11,9 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-      - uses: superfly/flyctl-actions/setup-flyctl@master
         with:
-          node-version: '20'
+            node-version: '20'
+      - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: npm install
         run: npm install
       - name: lint
