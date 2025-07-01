@@ -34,6 +34,7 @@ jobs:
       - name: create production build
         run: npm run build
       - name: deploy on fly.io
+        if: github.event_name == 'push'
         run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
