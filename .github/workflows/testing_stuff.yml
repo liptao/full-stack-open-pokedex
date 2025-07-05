@@ -7,7 +7,7 @@ on:
 
 jobs:
   a_test_job:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v4
       - name: github context
@@ -22,3 +22,7 @@ jobs:
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES"
+      - name: join commit messages
+        env:
+          JOINED_COMMIT_MESSAGES: join(${{ toJson(github.event.commits.*.message) }}, ', ')
+        run: echo "$JOINED_COMMIT_MESSAGES"
