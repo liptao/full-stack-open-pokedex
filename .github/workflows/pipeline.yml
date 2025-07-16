@@ -45,13 +45,6 @@ jobs:
             severity: info
             text: A new version of Pokedex deployed
             description: pokedex url here lol
-      - name: deploy success
-        uses: rjstone/discord-webhook-notify@v2
-        with:
-            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-            severity: info
-            text: A new version of Pokedex deployed
-            details: to pokedexurl
   tag_release:
     needs: [simple_deployment_pipeline]
     if: ${{ github.event_name == 'push' && contains(toJson(join(github.event.commits.*.message, ', ')), '#skip') == false}}
