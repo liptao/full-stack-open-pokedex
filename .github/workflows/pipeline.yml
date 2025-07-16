@@ -33,7 +33,6 @@ jobs:
         run: npx playwright test
       - name: create production build
         id: build
-        # run: npm run build
         run: exit 1
       - name: build failed
         if: ${{ failure() && steps.build.conclusion == 'failure' }}
