@@ -43,7 +43,7 @@ jobs:
         if: ${{ success() }}
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
-          content: "Test webhook message"
+          content: A new version of Pokedex deployed
   tag_release:
     needs: [simple_deployment_pipeline]
     if: ${{ github.event_name == 'push' && contains(toJson(join(github.event.commits.*.message, ', ')), '#skip') == false}}
