@@ -32,7 +32,15 @@ jobs:
       - name: e2e tests
         run: npx playwright test
       - name: create production build
-        run: npm run build
+        id: build
+        # run: npm run build
+        run: exit 1
+      - name: build failed
+        if: ${{ failure() && steps.build.conclusion == 'failure' }}
+        uses: tsickert/discord-webhook@v7.0.0
+        with:
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+          content: Build failed ${{ github.sha }}
       - name: deploy on fly.io
         if: ${{ github.event_name == 'push' }}
         run: flyctl deploy --remote-only
