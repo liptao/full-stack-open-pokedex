@@ -18,10 +18,10 @@ jobs:
             node-version: '20'
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: send message
-        uses: appleboy/discord-action@v1.2.0
+        uses: tsickert/discord-webhook@v7.0.0
         with:
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
-          message: Testing message lol
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+          content: "Test webhook message"
       - name: npm install
         run: npm install
       - name: lint
