@@ -33,7 +33,7 @@ jobs:
         run: npx playwright test
       - name: create production build
         id: build
-        run: exit 1
+        run: npm run build
       - name: build failed
         if: ${{ failure() && steps.build.conclusion == 'failure' }}
         uses: tsickert/discord-webhook@v7.0.0
